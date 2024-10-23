@@ -1,3 +1,4 @@
+
 #define ledRed 10
 #define ledGreen 11
 
@@ -30,52 +31,30 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-    digitalWrite(ledRed, HIGH);
-    delay(2000);
-    digitalWrite(ledRed, LOW);
-    delay(100);
-
    while(Serial.available())
     {
+      char cmd = Serial.read();
 
+      Serial.println(cmd);
 
-
-
-    char ch = Serial.read();
-
-    if (ch != 0){
-
-      digitalWrite(ledGreen, HIGH);
-      delay(2000);
-      digitalWrite(ledGreen, LOW);
-      delay(100);  
+      switch(cmd) {
+        case '1':
+          digitalWrite(ledRed, HIGH);
+          delay(2000);
+          digitalWrite(ledRed, LOW);
+          delay(100);
+          break;
+        case '2':
+          digitalWrite(ledGreen, HIGH);
+          delay(2000);
+          digitalWrite(ledGreen, LOW);
+          delay(100);
+          break;
+      }
     }
-  
-
-  }
 }
 
 
-void SerialEvent(){
-
-  while(Serial.available())
-  {
-
-
-    char ch = Serial.read();
-
-    if (ch != 0){
-
-      digitalWrite(ledGreen, HIGH);
-      delay(2000);
-      digitalWrite(ledGreen, LOW);
-      delay(100);  
-    }
-  
-
-  }
-
-}
 
 
 
