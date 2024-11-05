@@ -1,6 +1,11 @@
+#include "Sonar.h"
+
 
 #define ledRed 10
 #define ledGreen 11
+
+#define echoPin 12 
+#define trigPin 13
 
 void setup() {
 
@@ -9,6 +14,9 @@ void setup() {
 
   pinMode(ledRed, OUTPUT);
   pinMode(ledGreen, OUTPUT);
+
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
 
    // Startup sequence
   // -------------------------------
@@ -31,11 +39,20 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
+  double duration, distance;
+
+
+
    while(Serial.available())
     {
+      // ensure no transmits
+      digitalWrite(trigPin, LOW);
+      delayMicroseconds(2);
+
+
       char cmd = Serial.read();
 
-      Serial.println(cmd);
+      //Serial.println(cmd);
 
       switch(cmd) {
         case '1':
@@ -45,6 +62,16 @@ void loop() {
           delay(100);
           break;
         case '2':
+
+          // transmit
+          digitalWrite(trigPin, HIGH);
+          delayMicroseconds(10);
+          digitalWrite(trigPin, LOW);
+
+          duration = pulseIn(echoPin, HIGH);
+          distance = ((duration * 340) / 10000) / 2;
+
+          Serial.println(distance);
           digitalWrite(ledGreen, HIGH);
           delay(2000);
           digitalWrite(ledGreen, LOW);
