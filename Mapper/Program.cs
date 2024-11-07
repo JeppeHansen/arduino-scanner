@@ -14,16 +14,11 @@ namespace Mapper
         {
             Console.WriteLine("Hello, World!");
 
-            var writer = new Writer();
             
 
-           // var reader = new Reader();
-
-            writer.Write();
 
 
-
-            
+       
 
 
             //double[] dataX = { 1, 2, 3, 4, 5 };

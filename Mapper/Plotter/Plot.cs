@@ -7,10 +7,15 @@ using ScottPlot;
 
 namespace Mapper.Plotter
 {
-    public class Plotter
+    public class Plotter : IPlotter
     {
 
-        double[] dataX = {};
+        public List<double> Data { get; set; }
+
+        public Plotter() 
+        {
+            Data = [0];
+        }
         
         public double[] Parse(List<string> input)
         {
@@ -18,18 +23,16 @@ namespace Mapper.Plotter
 
         }
 
-
-        public void Draw(float distance, double data)
+        public void PlotGraph(int distCm, int dataPoints)
         {
-
-            double[] dataX = { 1, 2, 3, 4, 5 };
-            double[] dataY = { 1, 4, 9, 16, 25 };
-
-            ScottPlot.Plot myPlot = new();
-            myPlot.Add.Scatter(dataX, dataY);
-
-            myPlot.SavePng("quickstart.png", 400, 300);
+            throw new NotImplementedException();
         }
+
+        public void Clear()
+        {
+            Data = [0];
+        }
+      
 
     }
 }
