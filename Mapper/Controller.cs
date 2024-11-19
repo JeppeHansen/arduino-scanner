@@ -1,4 +1,4 @@
-﻿using Mapper.Plotter;
+﻿using Mapper.Plotting;
 using Mapper.SerialTransfer;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,6 @@ namespace Mapper
         private IPlotter _plotter;
         private IWriter _writer;
 
-
         public Controller(IWriter writer, IPlotter plotter)
         {
             _writer = writer;
@@ -24,17 +23,14 @@ namespace Mapper
             _serialPort = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
             _serialPort.DataReceived += new SerialDataReceivedEventHandler(port_data_received);
 
-
-
             _writer.Port = _serialPort;
 
         }
 
-
         public void StartTransfer()
         {
             _writer.Write();
-
+            _plotter.PlotGraph(5);
         }
 
         public void port_data_received(object sender, SerialDataReceivedEventArgs e)
@@ -45,13 +41,8 @@ namespace Mapper
             if (response != null)
             {
                 double response_double = double.Parse(response, System.Globalization.CultureInfo.InvariantCulture);
-                _plotter.Data.Add(response_double);
-               // measurement_double.Add(response_double);
-
+                _plotter.Data.Add(response_double);               
             }
         }
-
-
-
     }
 }

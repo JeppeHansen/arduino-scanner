@@ -1,8 +1,10 @@
-﻿using Mapper.Plotter;
+﻿using Mapper.Plotting;
 using Mapper.SerialTransfer;
 using System;
 using System.IO.Ports;
+using System.Runtime.CompilerServices;
 using System.Threading;
+using Mapper.Plotting;
 
 
 namespace Mapper
@@ -14,20 +16,13 @@ namespace Mapper
         {
             Console.WriteLine("Hello, World!");
 
-            
-
-
-
-       
-
-
-            //double[] dataX = { 1, 2, 3, 4, 5 };
-            //double[] dataY = { 1, 4, 9, 16, 25 };
-
-            //ScottPlot.Plot myPlot = new();
-            //myPlot.Add.Scatter(dataX, dataY);
-            
-            //myPlot.SavePng("quickstart.png", 400, 300);
+            Writer writer = new Writer();
+            Plotter plotter = new Plotter();
+           // plotter.Data = [1, 2, 3];
+           // plotter.PlotGraph(3);
+           
+            Controller controller = new Controller(writer, plotter);
+            controller.StartTransfer();
 
         }
     }

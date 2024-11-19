@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ScottPlot;
 
-namespace Mapper.Plotter
+namespace Mapper.Plotting
 {
     public class Plotter : IPlotter
     {
@@ -23,9 +23,23 @@ namespace Mapper.Plotter
 
         }
 
-        public void PlotGraph(int distCm, int dataPoints)
+        public void PlotGraph(int distCm)
         {
-            throw new NotImplementedException();
+            double[] dataY = {};
+
+            dataY = Data.ToArray();
+
+            double[] dataX = new double[dataY.Length];
+
+            for (int i = 0; i < dataX.Length; i++)
+            {
+                dataX[i] = (distCm / dataY.Length) * i;
+            }
+
+            ScottPlot.Plot myPlot = new();
+            myPlot.Add.Scatter(dataX, dataY);
+
+            myPlot.SavePng("quickstart.png", 400, 300);
         }
 
         public void Clear()
