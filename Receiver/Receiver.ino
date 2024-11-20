@@ -41,7 +41,7 @@ void loop() {
 
   double duration, distance;
 
-
+  Sonar sonar;
 
    while(Serial.available())
     {
@@ -56,10 +56,11 @@ void loop() {
 
       switch(cmd) {
         case '1':
-          digitalWrite(ledRed, HIGH);
-          delay(2000);
-          digitalWrite(ledRed, LOW);
-          delay(100);
+          sonar.led_red_flash(2000);
+          //digitalWrite(ledRed, HIGH);
+          //delay(2000);
+          //digitalWrite(ledRed, LOW);
+          //delay(100);
           break;
         case '2':
 

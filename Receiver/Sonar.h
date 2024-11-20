@@ -14,6 +14,8 @@ class Sonar
 public:
 
 	void led_startup(int times);
+  void led_green_flash(int duration);
+  void led_red_flash(int duration);
 	float calc_distance_cm(double duration);
 };
 
@@ -33,6 +35,23 @@ void Sonar::led_startup(int times) {
         delay(100);
 	}
 }
+
+void Sonar::led_green_flash(int duration) {
+
+    digitalWrite(ledGreen, HIGH);
+    delay(duration);
+    digitalWrite(ledGreen, LOW);
+    delay(100);
+}
+
+void Sonar::led_red_flash(int duration) {
+    
+    digitalWrite(ledRed, HIGH);
+    delay(duration);
+    digitalWrite(ledRed, LOW);
+    delay(100);
+}
+
 
 float Sonar::calc_distance_cm(double duration) {
 	return ((duration * 340) / 10000) / 2;
