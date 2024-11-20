@@ -4,7 +4,6 @@ using System;
 using System.IO.Ports;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using Mapper.Plotting;
 
 
 namespace Mapper

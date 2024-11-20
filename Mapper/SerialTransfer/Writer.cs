@@ -13,7 +13,6 @@ namespace Mapper.SerialTransfer
     {
 
         static bool _continue;
-       // static SerialPort _serialPort;
         public List<string> measurements = new List<string>();
         public List<double> measurement_double = new List<double>();
 

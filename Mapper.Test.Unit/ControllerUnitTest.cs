@@ -25,6 +25,8 @@ namespace Mapper.Test.Unit
                 _plotter = Substitute.For<IPlotter>();
 
                 _uut = new Controller(_writer, _plotter);
+
+
             }
 
 
@@ -32,6 +34,24 @@ namespace Mapper.Test.Unit
             public void ThisTestWillPass_True()
             {
                 Assert.Pass();
+            }
+
+            [Test]
+            public void StartTransfer_WriterCalled()
+            {
+                
+                _uut.StartTransfer();
+
+                _writer.Received(1);
+                
+            }
+
+            [Test]
+            public void StartTranfer_PlotterCalled()
+            {
+                _uut.StartTransfer();
+
+                _plotter.Received(1);
             }
         }
                

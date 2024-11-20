@@ -11,7 +11,7 @@ namespace Mapper.SerialTransfer
     public interface IWriter
     {
 
-        public SerialPort Port { get; set; }
+        public SerialPort? Port { get; set; }
 
         void Write();
 
